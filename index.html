@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="http://cdn.oboz.ua/js/plugins/mobile_owl/owl.carousel.min.js"></script>
+
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		.no-scroll {
+			overflow: hidden;
+		}
+
+		.fixed-gallery-wrap {
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background: #000;
+			z-index: 2000;
+			font-family: Roboto, sans-serif;
+		}
+
+		.fixed-gallery__count {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			padding: 15px;
+			box-sizing: border-box;
+			background: rgba(0, 0, 0, 0.4);
+			text-align: center;
+			color: #fff;
+			font-size: 18px;
+			font-weight: bold;
+			z-index:2;
+		}
+
+		.fixed-gallery__close {
+			width: 25px;
+			height: 25px;
+			position: absolute;
+			right: 0px;
+			top: 0px;
+			padding: 10px;
+			background: url('http://cdn.oboz.ua/css/i/mobile/X.svg') no-repeat center;
+			background-size: 25px;
+			cursor: pointer;
+			z-index: 3;
+		}
+
+		.fixed-gallery__slider-wrap,
+		.fixed-gallery__slider,
+		.fixed-gallery__item {
+			height: 100%;
+		}
+
+		.fixed-gallery__item {
+			text-align: center;
+			display: none;
+			position: relative;
+		}
+
+		.fixed-gallery__image {
+			max-width: 100%;
+			max-height:100%;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+
+		.fixed-gallery__item:first-child {
+			display: block;
+		}
+
+		.fixed-gallery__text {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			color: #fff;
+			font-family: Roboto, sans-serif;
+			font-size: 14px;
+			text-align: center;
+			padding: 15px;
+			box-sizing: border-box;
+			z-index: 5;
+			background: rgba(0, 0, 0, 0.4);
+		}
+
+		.fixed-gallery__copy {
+			color: #D2D2D2;
+		}
+
+		.fixed-gallery__slider .owl-prev,
+		.fixed-gallery__slider .owl-next {
+			position: absolute;
+			bottom: 0;
+			color: #fff;
+			padding: 5px 20px;
+			font-size: 30px;
+		}
+
+		.fixed-gallery__slider .owl-prev {
+			left: 0;
+		}
+		.fixed-gallery__slider .owl-next {
+			right: 0;
+		}
+	</style>
+
+	<script>
+		window.fixedGalleryImages = [
+			{
+				title: 'Заголовок 1',
+				source: 'Источник 1',
+				url: 'http://i.obozrevatel.ua/8/1845275/gallery/808167.jpg'
+			},
+			{
+				title: 'Заголовок 2',
+				source: 'Источник 2',
+				url: 'http://i.obozrevatel.ua/8/1845275/gallery/593071.jpg'
+			},
+			{
+				title: 'Заголовок 3',
+				source: 'Источник 3',
+				url: 'http://i.obozrevatel.ua/8/1845275/gallery/464510.jpg'
+			}
+		];
+
+		$(function () {
+			$('body').on('click', '.i-open-gallery', function (e) {
+				e.preventDefault();
+				loadFullGallery.init();
+
+			});
+			$(document).on('click', '.fixed-gallery-wrap', function (e) {
+				if (!$(e.target).closest('.fixed-gallery-wrap .owl-nav, .fixed-gallery__count, .fixed-gallery__close').length && $('.fixed-gallery-wrap').is(':visible') && $('.fixed-gallery-wrap').length) {
+					$('.fixed-gallery-wrap .owl-nav, .fixed-gallery__count, .fixed-gallery__close').toggle();
+					e.stopPropagation();
+				}
+
+			});
+			$('body').on('click', '.fixed-gallery__close', function (e) {
+				e.preventDefault();
+				$('.fixed-gallery-wrap').hide();
+			});
+		});
+
+		var loadFullGallery = {
+			init: function () {
+				$('body').addClass('no-scroll');
+				if ($('.fixed-gallery-wrap').length) {
+					$('.fixed-gallery-wrap').show();
+					$('.fixed-gallery__slider').trigger('resize.owl.carousel');
+					return;
+				}
+				$('body').append(this._mainTemplate());
+				$('.fixed-gallery__slider').owlCarousel({
+					center: true,
+					items: 1,
+					nav: true,
+					navText: ['<i class="icon iconl-arrow"></i>', '<i class="icon iconr-arrow"></i>'],
+					touchDrag: true,
+					mouseDrag: true,
+					pullDrag: false,
+					onInitialized: function () {
+						$('.fixed-gallery__item').height($(window).height());
+					},
+					onRefreshed: function () {
+						$('.fixed-gallery__item').height($(window).height());
+					},
+					onResized: function () {
+						$('.fixed-gallery__item').height($(window).height());
+					}
+				});
+			},
+			_mainTemplate: function () {
+				return '<div class="fixed-gallery-wrap">' +
+						'<div class="fixed-gallery__close"></div>' +
+						'<div class="fixed-gallery__count"><span class="fixed-gallery__current-item">1</span> из <span class="fixed-gallery__total-item">' + window.fixedGalleryImages.length + '</span></div>' +
+						'<div class="fixed-gallery__slider-wrap">' +
+						this._galleryTemplate() +
+						'</div>' +
+						'</div>'
+			},
+
+			_galleryTemplate: function () {
+				var list = '';
+				list += '<div class="fixed-gallery__slider">';
+				list += this._getGalleryItems();
+				list += '</div>';
+				return list;
+			},
+
+			_getGalleryItems: function () {
+				var itemsJson = window.fixedGalleryImages,
+						items = '';
+				itemsJson.forEach(function (item, i) {
+					var newItem = '';
+					newItem += '<div class="fixed-gallery__item">' +
+							'<img src="' + item.url + '" class="fixed-gallery__image" />';
+					if ((item.title != '' && item.title != undefined) || (item.source != '' && item.source != undefined)) {
+						var sep = '';
+						newItem += '<div class="fixed-gallery__text">';
+						if (item.title != '' && item.title != undefined) {
+							newItem += '<span class="fixed-gallery__title">' + item.title + '</span>';
+							sep = ' | ';
+						}
+						if (item.source != '' && item.source != undefined) {
+							newItem += sep + '<span class="fixed-gallery__copy">' + item.source + '</span>'
+						}
+						newItem += '</div>';
+					}
+					newItem += '</div>';
+					items += newItem;
+				});
+				return items;
+			}
+		};
+	</script>
+</head>
+<body>
+	<div class="main-wrapper">
+		<ul class="b-slider__list b-slider__list_inner i-main-news__slider">
+			<li class="b-slider__item">
+				<a href="" class="b-news-item__link-img i-open-gallery"><i class="b-news-item__img-count">+15</i><img src="http://i.obozrevatel.ua/8/1845275/gallery/808167.jpg" alt="На Днестровском лимане грянул &quot;Весенний гром-2016&quot;: яркие фото с учений ВСУ | фото 1" class="b-news-item__img b-news-item__img_abs"></a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
