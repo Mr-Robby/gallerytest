@@ -149,7 +149,8 @@
 		];
 
 		$(function () {
-			var $hammerImgs = $('.b-news-item__img').hammer({
+			var $galImgs = $('.b-news-item__img');
+			var $hammerImgs = $galImgs.hammer({
 				transform_always_block: true,
 				transform_min_scale: 1,
 				drag_block_horizontal: false,
@@ -177,8 +178,8 @@
 			var adjustScale = 1;
 			var adjustDeltaX = 0;
 			var adjustDeltaY = 0;
-			var imgWidth = $('.b-news-item__img').width();
-			var imgHeight = $('.b-news-item__img').height();
+			var imgWidth = $galImgs.width();
+			var imgHeight = $galImgs.height();
 
 			var currentScale = null;
 			var currentDeltaX = null;
@@ -191,12 +192,12 @@
 
 			// Handles pinch and pan events/transforming at the same time;
 			$hammerImgs.on("pinch pan", function (ev) {
-				console.log(ev)
+				console.log(ev);
 				var transforms = [];
 
 				// Adjusting the current pinch/pan event properties using the previous ones set when they finished touching
 				currentScale = adjustScale * ev.gesture.scale;
-				currentDeltaX =  adjustDeltaX + (ev.gesture.deltaX / currentScale);
+				currentDeltaX = $(window).width() < imgWidth*currentScale ? adjustDeltaX + (ev.gesture.deltaX / currentScale) : 0;
 				currentDeltaY = adjustDeltaY + (ev.gesture.deltaY / currentScale);
 
 				// Concatinating and applying parameters.
