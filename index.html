@@ -141,13 +141,37 @@
 		];
 
 		$(function () {
-			var $hammerImgs = $('.b-news-item__img_abs').hammer();
+			var $hammerImgs = $('.b-news-item__img_abs').hammer({
+				domEvents: true
+			});
 			$hammerImgs.data('hammer').get('pinch').set({enable: true});
 			$hammerImgs.on('tap', function() {
 				console.log('tap')
 			});
-			$hammerImgs.on('pinch', function() {
+
+			var width = 1900;
+			var height = 400;
+			var left = 950;
+			var top = 220;
+			$hammerImgs.on('pinch', function(e) {
 				console.log('pinch')
+				if ( width * e.originalEvent.gesture.scale >= 300 ) {
+					$( this ).find( "img" ).css({
+						width: width * e.originalEvent.gesture.scale,
+						"margin-left": -left * e.originalEvent.gesture.scale,
+						height: height * e.originalEvent.gesture.scale,
+						"margin-top": -top * e.originalEvent.gesture.scale
+					});
+				}
+				console.log( e.originalEvent.gesture.scale );
+			});
+
+			$hammerImgs.on( "pinchend", function( e ) {
+				width = width * e.originalEvent.gesture.scale;
+				height = height * e.originalEvent.gesture.scale;
+				left = left * e.originalEvent.gesture.scale;
+				top = top * e.originalEvent.gesture.scale;
+				console.log( width );
 			});
 
 			$('body').on('click', '.i-open-gallery', function (e) {
