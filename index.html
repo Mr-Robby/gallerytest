@@ -194,7 +194,7 @@
 				if(currentDeltaX <= ((imgWidth*currentScale)/2)-adjustDeltaX) {
 					currentDeltaX = adjustDeltaX + (ev.gesture.deltaX / currentScale);
 				} else {
-					currentDeltaX = adjustDeltaX;
+					currentDeltaX = ((imgWidth*currentScale)/2)-adjustDeltaX;
 				}
 
 				if(adjustDeltaY <= 0 || adjustDeltaY >= imgHeight*currentScale - $(window).height()) {
