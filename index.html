@@ -191,7 +191,7 @@
 				// Adjusting the current pinch/pan event properties using the previous ones set when they finished touching
 				currentScale = adjustScale * ev.gesture.scale < 1 ? 1 : adjustScale * ev.gesture.scale;
 				console.log(currentDeltaX, adjustDeltaX, ev.gesture.deltaX, currentDeltaX+ev.gesture.deltaX*currentScale);
-				if(currentDeltaX >= adjustDeltaX + (ev.gesture.deltaX * currentScale)) {
+				if(currentDeltaX <= adjustDeltaX + (ev.gesture.deltaX * currentScale)) {
 					currentDeltaX = adjustDeltaX + (ev.gesture.deltaX / currentScale);
 				} else {
 					currentDeltaX = adjustDeltaX;
