@@ -192,10 +192,10 @@
 				currentScale = adjustScale * ev.gesture.scale < 1 ? 1 : adjustScale * ev.gesture.scale;
 				console.log(((imgWidth*currentScale-$(window).width())/4)+ev.gesture.deltaX);
 				if(imgWidth*currentScale > $(window).width()) {
-					if(currentDeltaX <= ((imgWidth*currentScale-$(window).width())/4)+ev.gesture.deltaX) {
+					if(currentDeltaX <= ((imgWidth*currentScale-$(window).width())/4)-ev.gesture.deltaX) {
 						currentDeltaX = adjustDeltaX + (ev.gesture.deltaX / currentScale);
 					} else {
-						currentDeltaX = ((imgWidth*currentScale-$(window).width())/4)+ev.gesture.deltaX;
+						currentDeltaX = ((imgWidth*currentScale-$(window).width())/4)-ev.gesture.deltaX;
 					}
 				}
 				if(adjustDeltaY <= 0 || adjustDeltaY >= imgHeight*currentScale - $(window).height()) {
