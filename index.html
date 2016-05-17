@@ -167,10 +167,6 @@
 				drag_min_distance: 0
 			});
 			$hammerImgs.data('hammer').get('pinch').set({enable: true, recognizeWith: 'pan'});
-			$hammerImgs.on('tap', function(e) {
-				console.log('tap');
-			});
-
 
 			var adjustScale = 1;
 			var adjustDeltaX = 0;
@@ -194,7 +190,7 @@
 
 				// Adjusting the current pinch/pan event properties using the previous ones set when they finished touching
 				currentScale = adjustScale * ev.gesture.scale < 1 ? 1 : adjustScale * ev.gesture.scale;
-				console.log('windowW:', 'imgW: ', imgWidth*currentScale);
+
 				if(adjustDeltaX <= 0 && adjustDeltaX >= imgWidth*currentScale - $(window).width()) {
 					currentDeltaX = adjustDeltaX + (ev.gesture.deltaX / currentScale);
 				} else {
@@ -212,6 +208,7 @@
 				$('.b-news-item__img')[0].style.transform = transforms.join(' ');
 				console.log(transforms.join(' '));
 
+
 			});
 
 
@@ -221,6 +218,7 @@
 				adjustScale = currentScale;
 				adjustDeltaX = currentDeltaX;
 				adjustDeltaY = currentDeltaY;
+				console.log(adjustDeltaX, adjustDeltaY)
 
 			});
 
