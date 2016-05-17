@@ -190,8 +190,8 @@
 
 				// Adjusting the current pinch/pan event properties using the previous ones set when they finished touching
 				currentScale = adjustScale * ev.gesture.scale < 1 ? 1 : adjustScale * ev.gesture.scale;
-				console.log(currentDeltaX, adjustDeltaX, ev.gesture.deltaX, currentDeltaX+ev.gesture.deltaX*currentScale);
-				if(currentDeltaX <= ((imgWidth*currentScale)/2)-adjustDeltaX) {
+				console.log((imgWidth*currentScale-$(window).width()/2));
+				if(currentDeltaX <= (imgWidth*currentScale-$(window).width()/2)) {
 					currentDeltaX = adjustDeltaX + (ev.gesture.deltaX / currentScale);
 				} else {
 					currentDeltaX = ((imgWidth*currentScale)/2)-adjustDeltaX;
@@ -207,7 +207,6 @@
 				transforms.push('scale({0})'.replace('{0}', currentScale));
 				transforms.push('translate({0}px,{1}px)'.replace('{0}', currentDeltaX).replace('{1}', currentDeltaY));
 				$('.b-news-item__img')[0].style.transform = transforms.join(' ');
-				console.log(transforms.join(' '));
 
 
 			});
