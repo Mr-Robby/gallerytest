@@ -189,16 +189,16 @@
 
 				// Adjusting the current pinch/pan event properties using the previous ones set when they finished touching
 				currentScale = adjustScale * ev.gesture.scale < 1 ? 1 : adjustScale * ev.gesture.scale;
-				console.log('windowW: $(window).width()', 'imgW: ', imgWidth*currentScale);
-				if($(window).width() < imgWidth*currentScale && (adjustDeltaX <= 0 || adjustDeltaX >= imgWidth*currentScale - $(window).width())) {
+				console.log('windowW:', 'imgW: ', imgWidth*currentScale);
+				if(adjustDeltaX <= 0 && adjustDeltaX >= imgWidth*currentScale - $(window).width()) {
 					currentDeltaX = adjustDeltaX + (ev.gesture.deltaX / currentScale);
 				} else {
-					currentDeltaX = 0;
+					currentDeltaX = adjustDeltaX;
 				}
-				if($(window).width() < imgHeight*currentScale && (adjustDeltaY <= 0 || adjustDeltaY >= imgHeight*currentScale - $(window).height())) {
+				if(adjustDeltaY <= 0 || adjustDeltaY >= imgHeight*currentScale - $(window).height()) {
 					currentDeltaY = adjustDeltaY + (ev.gesture.deltaY / currentScale);
 				} else {
-					currentDeltaY = 0;
+					currentDeltaY = adjustDeltaY;
 				}
 
 				// Concatinating and applying parameters.
