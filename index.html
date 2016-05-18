@@ -6,222 +6,12 @@
 	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="http://cdn.oboz.ua/js/plugins/mobile_owl/owl.carousel.min.js"></script>
-	<script src="h.js"></script>
-	<script src="h.jquery.js"></script>
+	<script src="photoswipe.min.js"></script>
+	<script src="photoswipe-ui-default.min.js"></script>
+	<link rel="stylesheet" href="photoswipe.css">
+	<link rel="stylesheet" href="default-skin/default-skin.css">
 
 	<style>
-		.owl-carousel .animated {
-			-webkit-animation-duration: 1000ms;
-			animation-duration: 1000ms;
-			-webkit-animation-fill-mode: both;
-			animation-fill-mode: both
-		}
-
-		.owl-carousel .owl-animated-in {
-			z-index: 0
-		}
-
-		.owl-carousel .owl-animated-out {
-			z-index: 1
-		}
-
-		.owl-carousel .fadeOut {
-			-webkit-animation-name: fadeOut;
-			animation-name: fadeOut
-		}
-
-		@-webkit-keyframes fadeOut {
-			0% {
-				opacity: 1
-			}
-			100% {
-				opacity: 0
-			}
-		}
-
-		@keyframes fadeOut {
-			0% {
-				opacity: 1
-			}
-			100% {
-				opacity: 0
-			}
-		}
-
-		.owl-height {
-			-webkit-transition: height 500ms ease-in-out;
-			-moz-transition: height 500ms ease-in-out;
-			-ms-transition: height 500ms ease-in-out;
-			-o-transition: height 500ms ease-in-out;
-			transition: height 500ms ease-in-out
-		}
-
-		.owl-carousel {
-			display: none;
-			width: 100%;
-			-webkit-tap-highlight-color: transparent;
-			position: relative;
-			z-index: 1
-		}
-
-		.owl-carousel .owl-stage {
-			position: relative;
-			-ms-touch-action: pan-Y
-		}
-
-		.owl-carousel .owl-stage:after {
-			content: ".";
-			display: block;
-			clear: both;
-			visibility: hidden;
-			line-height: 0;
-			height: 0
-		}
-
-		.owl-carousel .owl-stage-outer {
-			position: relative;
-			overflow: hidden;
-			-webkit-transform: translate3d(0px, 0px, 0px)
-		}
-
-		.owl-carousel .owl-controls .owl-nav .owl-prev, .owl-carousel .owl-controls .owl-nav .owl-next, .owl-carousel .owl-controls .owl-dot {
-			cursor: pointer;
-			cursor: hand;
-			-webkit-user-select: none;
-			-khtml-user-select: none;
-			-moz-user-select: none;
-			-ms-user-select: none;
-			user-select: none
-		}
-
-		.owl-carousel.owl-loaded {
-			display: block
-		}
-
-		.owl-carousel.owl-loading {
-			opacity: 0;
-			display: block
-		}
-
-		.owl-carousel.owl-hidden {
-			opacity: 0
-		}
-
-		.owl-carousel .owl-refresh .owl-item {
-			display: none
-		}
-
-		.owl-carousel .owl-item {
-			position: relative;
-			min-height: 1px;
-			float: left;
-			-webkit-backface-visibility: hidden;
-			-webkit-tap-highlight-color: transparent;
-			-webkit-touch-callout: none;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			-ms-user-select: none;
-			user-select: none
-		}
-
-		.owl-carousel .owl-item img {
-			display: block
-		}
-
-		.owl-carousel.owl-text-select-on .owl-item {
-			-webkit-user-select: auto;
-			-moz-user-select: auto;
-			-ms-user-select: auto;
-			user-select: auto
-		}
-
-		.owl-carousel .owl-grab {
-			cursor: move;
-			cursor: -webkit-grab;
-			cursor: -o-grab;
-			cursor: -ms-grab;
-			cursor: grab
-		}
-
-		.owl-carousel.owl-rtl {
-			direction: rtl
-		}
-
-		.owl-carousel.owl-rtl .owl-item {
-			float: right
-		}
-
-		.no-js .owl-carousel {
-			display: block
-		}
-
-		.owl-carousel .owl-item .owl-lazy {
-			opacity: 0;
-			-webkit-transition: opacity 400ms ease;
-			-moz-transition: opacity 400ms ease;
-			-ms-transition: opacity 400ms ease;
-			-o-transition: opacity 400ms ease;
-			transition: opacity 400ms ease
-		}
-
-		.owl-carousel .owl-video-wrapper {
-			position: relative;
-			height: 100%;
-			background: #000
-		}
-
-		.owl-carousel .owl-video-play-icon {
-			position: absolute;
-			height: 80px;
-			width: 80px;
-			left: 50%;
-			top: 50%;
-			margin-left: -40px;
-			margin-top: -40px;
-			background: url(owl.video.play.png) no-repeat;
-			cursor: pointer;
-			z-index: 1;
-			-webkit-backface-visibility: hidden;
-			-webkit-transition: scale 100ms ease;
-			-moz-transition: scale 100ms ease;
-			-ms-transition: scale 100ms ease;
-			-o-transition: scale 100ms ease;
-			transition: scale 100ms ease
-		}
-
-		.owl-carousel .owl-video-play-icon:hover {
-			-webkit-transition: scale(1.3, 1.3);
-			-moz-transition: scale(1.3, 1.3);
-			-ms-transition: scale(1.3, 1.3);
-			-o-transition: scale(1.3, 1.3);
-			transition: scale(1.3, 1.3)
-		}
-
-		.owl-carousel .owl-video-playing .owl-video-tn, .owl-carousel .owl-video-playing .owl-video-play-icon {
-			display: none
-		}
-
-		.owl-carousel .owl-video-tn {
-			opacity: 0;
-			height: 100%;
-			background-position: center center;
-			background-repeat: no-repeat;
-			-webkit-background-size: contain;
-			-moz-background-size: contain;
-			-o-background-size: contain;
-			background-size: contain;
-			-webkit-transition: opacity 400ms ease;
-			-moz-transition: opacity 400ms ease;
-			-ms-transition: opacity 400ms ease;
-			-o-transition: opacity 400ms ease;
-			transition: opacity 400ms ease
-		}
-
-		.owl-carousel .owl-video-frame {
-			position: relative;
-			z-index: 1
-		}
-
 		body {
 			margin: 0;
 			padding: 0;
@@ -230,111 +20,6 @@
 		ul, li {
 			padding: 0;
 			margin: 0;
-		}
-
-		.no-scroll {
-			overflow: hidden;
-		}
-
-		.fixed-gallery-wrap {
-			position: fixed;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			background: #000;
-			z-index: 2000;
-			font-family: Roboto, sans-serif;
-		}
-
-		.fixed-gallery__count {
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			padding: 15px;
-			box-sizing: border-box;
-			background: rgba(0, 0, 0, 0.4);
-			text-align: center;
-			color: #fff;
-			font-size: 18px;
-			font-weight: bold;
-			z-index: 2;
-		}
-
-		.fixed-gallery__close {
-			width: 25px;
-			height: 25px;
-			position: absolute;
-			right: 0px;
-			top: 0px;
-			padding: 10px;
-			background: url('http://cdn.oboz.ua/css/i/mobile/X.svg') no-repeat center;
-			background-size: 25px;
-			cursor: pointer;
-			z-index: 3;
-		}
-
-		.fixed-gallery__slider-wrap,
-		.fixed-gallery__slider,
-		.fixed-gallery__item {
-			height: 100%;
-		}
-
-		.fixed-gallery__item {
-			text-align: center;
-			display: none;
-			position: relative;
-		}
-
-		.fixed-gallery__image {
-			max-width: 100%;
-			max-height: 100%;
-			position: absolute;
-			left: 0;
-			right: 0;
-			top: 0;
-			bottom: 0;
-			margin: auto;
-		}
-
-		.fixed-gallery__item:first-child {
-			display: block;
-		}
-
-		.fixed-gallery__text {
-			position: absolute;
-			bottom: 0;
-			width: 100%;
-			color: #fff;
-			font-family: Roboto, sans-serif;
-			font-size: 14px;
-			text-align: center;
-			padding: 15px;
-			box-sizing: border-box;
-			z-index: 5;
-			background: rgba(0, 0, 0, 0.4);
-		}
-
-		.fixed-gallery__copy {
-			color: #D2D2D2;
-		}
-
-		.fixed-gallery__slider .owl-prev,
-		.fixed-gallery__slider .owl-next {
-			position: absolute;
-			bottom: 0;
-			color: #fff;
-			padding: 5px 20px;
-			font-size: 30px;
-		}
-
-		.fixed-gallery__slider .owl-prev {
-			left: 0;
-		}
-
-		.fixed-gallery__slider .owl-next {
-			right: 0;
 		}
 
 		.b-news-item__link-img {
@@ -347,250 +32,123 @@
 			position: relative;
 			z-index: 9999;
 		}
+
+		.pswp {
+			z-index: 9999;
+		}
 	</style>
 
 	<script>
-		!function () {
-			var a = window.MutationObserver || window.WebKitMutationObserver, b = "ontouchstart" in window || window.DocumentTouch && document instanceof DocumentTouch, c = void 0 !== document.documentElement.style["touch-action"] || document.documentElement.style["-ms-touch-action"];
-			if (!c && b && a) {
-				window.Hammer = window.Hammer || {};
-				var d = /touch-action[:][\s]*(none)[^;'"]*/, e = /touch-action[:][\s]*(manipulation)[^;'"]*/, f = /touch-action/, g = navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? !0 : !1, h = function () {
-					try {
-						var a = document.createElement("canvas");
-						return !(!window.WebGLRenderingContext || !a.getContext("webgl") && !a.getContext("experimental-webgl"))
-					} catch (b) {
-						return !1
-					}
-				}(), i = h && g;
-				window.Hammer.time = {
-					getTouchAction: function (a) {
-						return this.checkStyleString(a.getAttribute("style"))
-					}, checkStyleString: function (a) {
-						return f.test(a) ? d.test(a) ? "none" : e.test(a) ? "manipulation" : !0 : void 0
-					}, shouldHammer: function (a) {
-						var b = this.hasParent(a.target);
-						return b && (!i || Date.now() - a.target.lastStart < 125) ? b : !1
-					}, touchHandler: function (a) {
-						var b = a.target.getBoundingClientRect(), c = b.top !== this.pos.top || b.left !== this.pos.left, d = this.shouldHammer(a);
-						("none" === d || c === !1 && "manipulation" === d) && ("touchend" === a.type && (a.target.focus(), setTimeout(function () {
-							a.target.click()
-						}, 0)), a.preventDefault()), this.scrolled = !1, delete a.target.lastStart
-					}, touchStart: function (a) {
-						this.pos = a.target.getBoundingClientRect(), i && this.hasParent(a.target) && (a.target.lastStart = Date.now())
-					}, styleWatcher: function (a) {
-						a.forEach(this.styleUpdater, this)
-					}, styleUpdater: function (a) {
-						if (a.target.updateNext)return void(a.target.updateNext = !1);
-						var b = this.getTouchAction(a.target);
-						return b ? void("none" !== b && (a.target.hadTouchNone = !1)) : void(!b && (a.oldValue && this.checkStyleString(a.oldValue) || a.target.hadTouchNone) && (a.target.hadTouchNone = !0, a.target.updateNext = !1, a.target.setAttribute("style", a.target.getAttribute("style") + " touch-action: none;")))
-					}, hasParent: function (a) {
-						for (var b, c = a; c && c.parentNode; c = c.parentNode)if (b = this.getTouchAction(c))return b;
-						return !1
-					}, installStartEvents: function () {
-						document.addEventListener("touchstart", this.touchStart.bind(this)), document.addEventListener("mousedown", this.touchStart.bind(this))
-					}, installEndEvents: function () {
-						document.addEventListener("touchend", this.touchHandler.bind(this), !0), document.addEventListener("mouseup", this.touchHandler.bind(this), !0)
-					}, installObserver: function () {
-						this.observer = new a(this.styleWatcher.bind(this)).observe(document, {subtree: !0, attributes: !0, attributeOldValue: !0, attributeFilter: ["style"]})
-					}, install: function () {
-						this.installEndEvents(), this.installStartEvents(), this.installObserver()
-					}
-				}, window.Hammer.time.install()
-			}
-		}();
 		window.fixedGalleryImages = [
 			{
+				src: 'http://i.obozrevatel.ua/8/1845275/gallery/808167.jpg',
 				title: 'Заголовок 1',
-				source: 'Источник 1',
-				url: 'http://i.obozrevatel.ua/8/1845275/gallery/808167.jpg'
+				w: 600,
+				h: 600
 			},
 			{
+				src: 'http://i.obozrevatel.ua/8/1845275/gallery/808167.jpg',
 				title: 'Заголовок 2',
-				source: 'Источник 2',
-				url: 'http://i.obozrevatel.ua/8/1845275/gallery/593071.jpg'
-			},
-			{
-				title: 'Заголовок 3',
-				source: 'Источник 3',
-				url: 'http://i.obozrevatel.ua/8/1845275/gallery/464510.jpg'
+				w: 600,
+				h: 600
 			}
 		];
 
 		$(function () {
-			var $galImgs = $('.b-news-item__img');
-			var $hammerImgs = $galImgs.hammer({
-				transform_always_block: true,
-				transform_min_scale: 1,
-				drag_block_horizontal: false,
-				drag_block_vertical: false,
-				drag_min_distance: 0
-			});
-			$hammerImgs.data('hammer').get('pinch').set({enable: true, recognizeWith: 'pan'});
+			var fixedGallery = function() {
+				var pswpElement = $('.pswp')[0];
+				var options= {
+				history: false,
+				focus: false,
 
-			var adjustScale = 1;
-			var adjustDeltaX = 0;
-			var adjustDeltaY = 0;
-			var imgWidth = $galImgs.width();
-			var imgHeight = $galImgs.height();
+				showAnimationDuration: 0,
+				hideAnimationDuration: 0
+				};
+				var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, window.fixedGalleryImages, options);
+				gallery.init();
+			};
 
-			var currentScale = null;
-			var currentDeltaX = null;
-			var currentDeltaY = null;
-			var defDeltaX = null,
-				defDeltaY = null;
-
-			// Prevent long press saving on mobiles.
-			$hammerImgs.on('touchstart', function (e) {
-				e.preventDefault()
-			});
-
-			// Handles pinch and pan events/transforming at the same time;
-			$hammerImgs.on("pinch pan", function (ev) {
-				console.log(ev);
-				var transforms = [];
-
-				// Adjusting the current pinch/pan event properties using the previous ones set when they finished touching
-				currentScale = adjustScale * ev.gesture.scale < 1 ? 1 : adjustScale * ev.gesture.scale;
-
-				defDeltaX = currentDeltaX;
-				defDeltaY = currentDeltaY;
-//				console.log(((imgWidth * currentScale - $(window).width()) / 4) + ev.gesture.deltaX);
-				if (imgWidth * currentScale > $(window).width()) {
-					currentDeltaX = adjustDeltaX + (ev.gesture.deltaX / currentScale);
-				}
-				if (adjustDeltaY <= 0 || adjustDeltaY >= imgHeight * currentScale - $(window).height()) {
-					currentDeltaY = adjustDeltaY + (ev.gesture.deltaY / currentScale);
-				} else {
-					currentDeltaY = adjustDeltaY;
-				}
-
-				// Concatinating and applying parameters.
-				transforms.push('scale({0})'.replace('{0}', currentScale));
-				transforms.push('translate({0}px,{1}px)'.replace('{0}', currentDeltaX).replace('{1}', currentDeltaY));
-				$('.b-news-item__img')[0].style.transform = transforms.join(' ');
-
-
-			});
-
-
-			$hammerImgs.on("panend pinchend", function (ev) {
-				if (imgWidth * currentScale > $(window).width()) {
-					if (defDeltaX <= ((imgWidth * currentScale - $(window).width()) / 4)) {
-						currentDeltaX = adjustDeltaX + (ev.gesture.deltaX / currentScale);
-					}
-				}
-
-				// Saving the final transforms for adjustment next time the user interacts.
-				adjustScale = currentScale;
-				adjustDeltaX = currentDeltaX;
-				adjustDeltaY = currentDeltaY;
-				console.log(adjustDeltaX, adjustDeltaY)
-
-			});
-
-
-			$('body').on('click', '.i-open-gallery', function (e) {
+			$('.i-open-gallery').click(function(e) {
 				e.preventDefault();
-				//loadFullGallery.init();
+				fixedGallery();
+			});
 
-			});
-			$(document).on('click', '.fixed-gallery-wrap', function (e) {
-				if (!$(e.target).closest('.fixed-gallery-wrap .owl-nav, .fixed-gallery__count, .fixed-gallery__close').length && $('.fixed-gallery-wrap').is(':visible') && $('.fixed-gallery-wrap').length) {
-					$('.fixed-gallery-wrap .owl-nav, .fixed-gallery__count, .fixed-gallery__close').toggle();
-					e.stopPropagation();
-				}
-
-			});
-			$('body').on('click', '.fixed-gallery__close', function (e) {
-				e.preventDefault();
-				$('.fixed-gallery-wrap').hide();
-			});
 		});
-
-		var loadFullGallery = {
-			init: function () {
-				$('body').addClass('no-scroll');
-				if ($('.fixed-gallery-wrap').length) {
-					$('.fixed-gallery-wrap').show();
-					$('.fixed-gallery__slider').trigger('resize.owl.carousel');
-					return;
-				}
-
-				$('body').append(this._mainTemplate());
-				$('.fixed-gallery__slider').owlCarousel({
-					center: true,
-					items: 1,
-					nav: true,
-					navText: ['<i class="icon iconl-arrow"></i>', '<i class="icon iconr-arrow"></i>'],
-					touchDrag: true,
-					mouseDrag: true,
-					pullDrag: false,
-					onInitialized: function () {
-						$('.fixed-gallery__item').height($(window).height());
-
-					},
-					onRefreshed: function () {
-						$('.fixed-gallery__item').height($(window).height());
-					},
-					onResized: function () {
-						$('.fixed-gallery__item').height($(window).height());
-					}
-				});
-			},
-			_mainTemplate: function () {
-				return '<div class="fixed-gallery-wrap">' +
-						'<div class="fixed-gallery__close"></div>' +
-						'<div class="fixed-gallery__count"><span class="fixed-gallery__current-item">1</span> из <span class="fixed-gallery__total-item">' + window.fixedGalleryImages.length + '</span></div>' +
-						'<div class="fixed-gallery__slider-wrap">' +
-						this._galleryTemplate() +
-						'</div>' +
-						'</div>'
-			},
-
-			_galleryTemplate: function () {
-				var list = '';
-				list += '<div class="fixed-gallery__slider">';
-				list += this._getGalleryItems();
-				list += '</div>';
-				return list;
-			},
-
-			_getGalleryItems: function () {
-				var itemsJson = window.fixedGalleryImages,
-						items = '';
-				itemsJson.forEach(function (item, i) {
-					var newItem = '';
-					newItem += '<div class="fixed-gallery__item">' +
-							'<img src="' + item.url + '" class="fixed-gallery__image" />';
-					if ((item.title != '' && item.title != undefined) || (item.source != '' && item.source != undefined)) {
-						var sep = '';
-						newItem += '<div class="fixed-gallery__text">';
-						if (item.title != '' && item.title != undefined) {
-							newItem += '<span class="fixed-gallery__title">' + item.title + '</span>';
-							sep = ' | ';
-						}
-						if (item.source != '' && item.source != undefined) {
-							newItem += sep + '<span class="fixed-gallery__copy">' + item.source + '</span>'
-						}
-						newItem += '</div>';
-					}
-					newItem += '</div>';
-					items += newItem;
-				});
-				return items;
-			}
-		};
-
-
 	</script>
 </head>
 <body>
 <div class="main-wrapper">
 	<ul class="b-slider__list b-slider__list_inner i-main-news__slider">
 		<li class="b-slider__item">
-			<div class="b-news-item__link-img i-open-gallery"><i class="b-news-item__img-count">+15</i><img src="http://i.obozrevatel.ua/8/1845275/gallery/808167.jpg" alt="На Днестровском лимане грянул &quot;Весенний гром-2016&quot;: яркие фото с учений ВСУ | фото 1" class="b-news-item__img b-news-item__img_abs"></div>
+			<a href="" class="b-news-item__link-img i-open-gallery"><i class="b-news-item__img-count">+15</i><img src="http://i.obozrevatel.ua/8/1845275/gallery/808167.jpg" alt="На Днестровском лимане грянул &quot;Весенний гром-2016&quot;: яркие фото с учений ВСУ | фото 1" class="b-news-item__img b-news-item__img_abs"></a>
 		</li>
 	</ul>
+	<!-- Root element of PhotoSwipe. Must have class pswp. -->
+	<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+		<!-- Background of PhotoSwipe.
+			 It's a separate element as animating opacity is faster than rgba(). -->
+		<div class="pswp__bg"></div>
+
+		<!-- Slides wrapper with overflow:hidden. -->
+		<div class="pswp__scroll-wrap">
+
+			<!-- Container that holds slides.
+				PhotoSwipe keeps only 3 of them in the DOM to save memory.
+				Don't modify these 3 pswp__item elements, data is added later on. -->
+			<div class="pswp__container">
+				<div class="pswp__item"></div>
+				<div class="pswp__item"></div>
+				<div class="pswp__item"></div>
+			</div>
+
+			<!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+			<div class="pswp__ui pswp__ui--hidden">
+
+				<div class="pswp__top-bar">
+
+					<!--  Controls are self-explanatory. Order can be changed. -->
+
+					<div class="pswp__counter"></div>
+
+					<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+					<button class="pswp__button pswp__button--share" title="Share"></button>
+
+					<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+					<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+					<!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+					<!-- element will get class pswp__preloader--active when preloader is running -->
+					<div class="pswp__preloader">
+						<div class="pswp__preloader__icn">
+							<div class="pswp__preloader__cut">
+								<div class="pswp__preloader__donut"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+					<div class="pswp__share-tooltip"></div>
+				</div>
+
+				<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+				</button>
+
+				<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+				</button>
+
+				<div class="pswp__caption">
+					<div class="pswp__caption__center"></div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
 </div>
 </body>
 </html>
