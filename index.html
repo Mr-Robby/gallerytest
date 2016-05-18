@@ -42,30 +42,46 @@
 		window.fixedGalleryImages = [
 			{
 				src: 'http://i.obozrevatel.ua/8/1845275/gallery/808167.jpg',
-				title: 'Заголовок 1',
-				w: 600,
-				h: 600
+				title: 'Заголовок 1'
 			},
 			{
 				src: 'http://i.obozrevatel.ua/8/1845275/gallery/808167.jpg',
-				title: 'Заголовок 2',
-				w: 600,
-				h: 600
+				title: 'Заголовок 2'
 			}
 		];
 
 		$(function () {
+			var sizeFlag = false;
 			var fixedGallery = function() {
-				var pswpElement = $('.pswp')[0];
-				var options= {
-				history: false,
-				focus: false,
+				if(!$('.gallery-helper').length) {
+					$('body').append('<div style="visibility: hidden;position: absolute;z-index: -2;left:-20000em" class="gallery-helper"></div>');
+				}
+				$('.gallery-helper').html('');
+				if(!sizeFlag) {
+					window.fixedGalleryImages.forEach(function(item, i) {
+						$('.gallery-helper').append('<img class="gallery-helper__img" src="'+item.src+'" />');
+						item.w = $('.gallery-helper__img').eq(i).width();
+						item.h = $('.gallery-helper__img').eq(i).height();
+						sizeFlag = true;
+					});
+					$('.gallery-helper').remove();
+				}
+				var fixedGalleryDOM = '<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true"><div class="pswp__bg"></div><div class="pswp__scroll-wrap"><div class="pswp__container"><div class="pswp__item"></div><div class="pswp__item"></div><div class="pswp__item"></div></div><div class="pswp__ui pswp__ui--hidden"><div class="pswp__top-bar"><div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button><button class="pswp__button pswp__button--share" title="Share"></button><button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button><button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class="pswp__preloader"><div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class="pswp__share-tooltip"></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button><button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class="pswp__caption"><div class="pswp__caption__center"></div></div></div></div></div>'
+				if(!$('.pswp').length) {
+					$('body').append(fixedGalleryDOM);
+				}
 
-				showAnimationDuration: 0,
-				hideAnimationDuration: 0
-				};
-				var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, window.fixedGalleryImages, options);
-				gallery.init();
+				var pswpElement = $('.pswp')[0],
+					options= {
+						history: false,
+						focus: false,
+
+						showAnimationDuration: 0,
+						hideAnimationDuration: 0
+					},
+					fixedGalleryLoad = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, window.fixedGalleryImages, options);
+
+				fixedGalleryLoad.init();
 			};
 
 			$('.i-open-gallery').click(function(e) {
@@ -83,72 +99,6 @@
 			<a href="" class="b-news-item__link-img i-open-gallery"><i class="b-news-item__img-count">+15</i><img src="http://i.obozrevatel.ua/8/1845275/gallery/808167.jpg" alt="На Днестровском лимане грянул &quot;Весенний гром-2016&quot;: яркие фото с учений ВСУ | фото 1" class="b-news-item__img b-news-item__img_abs"></a>
 		</li>
 	</ul>
-	<!-- Root element of PhotoSwipe. Must have class pswp. -->
-	<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-		<!-- Background of PhotoSwipe.
-			 It's a separate element as animating opacity is faster than rgba(). -->
-		<div class="pswp__bg"></div>
-
-		<!-- Slides wrapper with overflow:hidden. -->
-		<div class="pswp__scroll-wrap">
-
-			<!-- Container that holds slides.
-				PhotoSwipe keeps only 3 of them in the DOM to save memory.
-				Don't modify these 3 pswp__item elements, data is added later on. -->
-			<div class="pswp__container">
-				<div class="pswp__item"></div>
-				<div class="pswp__item"></div>
-				<div class="pswp__item"></div>
-			</div>
-
-			<!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-			<div class="pswp__ui pswp__ui--hidden">
-
-				<div class="pswp__top-bar">
-
-					<!--  Controls are self-explanatory. Order can be changed. -->
-
-					<div class="pswp__counter"></div>
-
-					<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-					<button class="pswp__button pswp__button--share" title="Share"></button>
-
-					<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-					<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-					<!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-					<!-- element will get class pswp__preloader--active when preloader is running -->
-					<div class="pswp__preloader">
-						<div class="pswp__preloader__icn">
-							<div class="pswp__preloader__cut">
-								<div class="pswp__preloader__donut"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-					<div class="pswp__share-tooltip"></div>
-				</div>
-
-				<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-				</button>
-
-				<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-				</button>
-
-				<div class="pswp__caption">
-					<div class="pswp__caption__center"></div>
-				</div>
-
-			</div>
-
-		</div>
-
-	</div>
 </div>
 </body>
 </html>
