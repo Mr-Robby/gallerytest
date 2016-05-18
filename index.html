@@ -10,7 +10,218 @@
 	<script src="h.jquery.js"></script>
 
 	<style>
-		.owl-carousel .animated{-webkit-animation-duration:1000ms;animation-duration:1000ms;-webkit-animation-fill-mode:both;animation-fill-mode:both}.owl-carousel .owl-animated-in{z-index:0}.owl-carousel .owl-animated-out{z-index:1}.owl-carousel .fadeOut{-webkit-animation-name:fadeOut;animation-name:fadeOut}@-webkit-keyframes fadeOut{0%{opacity:1}100%{opacity:0}}@keyframes fadeOut{0%{opacity:1}100%{opacity:0}}.owl-height{-webkit-transition:height 500ms ease-in-out;-moz-transition:height 500ms ease-in-out;-ms-transition:height 500ms ease-in-out;-o-transition:height 500ms ease-in-out;transition:height 500ms ease-in-out}.owl-carousel{display:none;width:100%;-webkit-tap-highlight-color:transparent;position:relative;z-index:1}.owl-carousel .owl-stage{position:relative;-ms-touch-action:pan-Y}.owl-carousel .owl-stage:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}.owl-carousel .owl-stage-outer{position:relative;overflow:hidden;-webkit-transform:translate3d(0px,0px,0px)}.owl-carousel .owl-controls .owl-nav .owl-prev,.owl-carousel .owl-controls .owl-nav .owl-next,.owl-carousel .owl-controls .owl-dot{cursor:pointer;cursor:hand;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.owl-carousel.owl-loaded{display:block}.owl-carousel.owl-loading{opacity:0;display:block}.owl-carousel.owl-hidden{opacity:0}.owl-carousel .owl-refresh .owl-item{display:none}.owl-carousel .owl-item{position:relative;min-height:1px;float:left;-webkit-backface-visibility:hidden;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.owl-carousel .owl-item img{display:block}.owl-carousel.owl-text-select-on .owl-item{-webkit-user-select:auto;-moz-user-select:auto;-ms-user-select:auto;user-select:auto}.owl-carousel .owl-grab{cursor:move;cursor:-webkit-grab;cursor:-o-grab;cursor:-ms-grab;cursor:grab}.owl-carousel.owl-rtl{direction:rtl}.owl-carousel.owl-rtl .owl-item{float:right}.no-js .owl-carousel{display:block}.owl-carousel .owl-item .owl-lazy{opacity:0;-webkit-transition:opacity 400ms ease;-moz-transition:opacity 400ms ease;-ms-transition:opacity 400ms ease;-o-transition:opacity 400ms ease;transition:opacity 400ms ease}.owl-carousel .owl-video-wrapper{position:relative;height:100%;background:#000}.owl-carousel .owl-video-play-icon{position:absolute;height:80px;width:80px;left:50%;top:50%;margin-left:-40px;margin-top:-40px;background:url(owl.video.play.png) no-repeat;cursor:pointer;z-index:1;-webkit-backface-visibility:hidden;-webkit-transition:scale 100ms ease;-moz-transition:scale 100ms ease;-ms-transition:scale 100ms ease;-o-transition:scale 100ms ease;transition:scale 100ms ease}.owl-carousel .owl-video-play-icon:hover{-webkit-transition:scale(1.3,1.3);-moz-transition:scale(1.3,1.3);-ms-transition:scale(1.3,1.3);-o-transition:scale(1.3,1.3);transition:scale(1.3,1.3)}.owl-carousel .owl-video-playing .owl-video-tn,.owl-carousel .owl-video-playing .owl-video-play-icon{display:none}.owl-carousel .owl-video-tn{opacity:0;height:100%;background-position:center center;background-repeat:no-repeat;-webkit-background-size:contain;-moz-background-size:contain;-o-background-size:contain;background-size:contain;-webkit-transition:opacity 400ms ease;-moz-transition:opacity 400ms ease;-ms-transition:opacity 400ms ease;-o-transition:opacity 400ms ease;transition:opacity 400ms ease}.owl-carousel .owl-video-frame{position:relative;z-index:1}
+		.owl-carousel .animated {
+			-webkit-animation-duration: 1000ms;
+			animation-duration: 1000ms;
+			-webkit-animation-fill-mode: both;
+			animation-fill-mode: both
+		}
+
+		.owl-carousel .owl-animated-in {
+			z-index: 0
+		}
+
+		.owl-carousel .owl-animated-out {
+			z-index: 1
+		}
+
+		.owl-carousel .fadeOut {
+			-webkit-animation-name: fadeOut;
+			animation-name: fadeOut
+		}
+
+		@-webkit-keyframes fadeOut {
+			0% {
+				opacity: 1
+			}
+			100% {
+				opacity: 0
+			}
+		}
+
+		@keyframes fadeOut {
+			0% {
+				opacity: 1
+			}
+			100% {
+				opacity: 0
+			}
+		}
+
+		.owl-height {
+			-webkit-transition: height 500ms ease-in-out;
+			-moz-transition: height 500ms ease-in-out;
+			-ms-transition: height 500ms ease-in-out;
+			-o-transition: height 500ms ease-in-out;
+			transition: height 500ms ease-in-out
+		}
+
+		.owl-carousel {
+			display: none;
+			width: 100%;
+			-webkit-tap-highlight-color: transparent;
+			position: relative;
+			z-index: 1
+		}
+
+		.owl-carousel .owl-stage {
+			position: relative;
+			-ms-touch-action: pan-Y
+		}
+
+		.owl-carousel .owl-stage:after {
+			content: ".";
+			display: block;
+			clear: both;
+			visibility: hidden;
+			line-height: 0;
+			height: 0
+		}
+
+		.owl-carousel .owl-stage-outer {
+			position: relative;
+			overflow: hidden;
+			-webkit-transform: translate3d(0px, 0px, 0px)
+		}
+
+		.owl-carousel .owl-controls .owl-nav .owl-prev, .owl-carousel .owl-controls .owl-nav .owl-next, .owl-carousel .owl-controls .owl-dot {
+			cursor: pointer;
+			cursor: hand;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none
+		}
+
+		.owl-carousel.owl-loaded {
+			display: block
+		}
+
+		.owl-carousel.owl-loading {
+			opacity: 0;
+			display: block
+		}
+
+		.owl-carousel.owl-hidden {
+			opacity: 0
+		}
+
+		.owl-carousel .owl-refresh .owl-item {
+			display: none
+		}
+
+		.owl-carousel .owl-item {
+			position: relative;
+			min-height: 1px;
+			float: left;
+			-webkit-backface-visibility: hidden;
+			-webkit-tap-highlight-color: transparent;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none
+		}
+
+		.owl-carousel .owl-item img {
+			display: block
+		}
+
+		.owl-carousel.owl-text-select-on .owl-item {
+			-webkit-user-select: auto;
+			-moz-user-select: auto;
+			-ms-user-select: auto;
+			user-select: auto
+		}
+
+		.owl-carousel .owl-grab {
+			cursor: move;
+			cursor: -webkit-grab;
+			cursor: -o-grab;
+			cursor: -ms-grab;
+			cursor: grab
+		}
+
+		.owl-carousel.owl-rtl {
+			direction: rtl
+		}
+
+		.owl-carousel.owl-rtl .owl-item {
+			float: right
+		}
+
+		.no-js .owl-carousel {
+			display: block
+		}
+
+		.owl-carousel .owl-item .owl-lazy {
+			opacity: 0;
+			-webkit-transition: opacity 400ms ease;
+			-moz-transition: opacity 400ms ease;
+			-ms-transition: opacity 400ms ease;
+			-o-transition: opacity 400ms ease;
+			transition: opacity 400ms ease
+		}
+
+		.owl-carousel .owl-video-wrapper {
+			position: relative;
+			height: 100%;
+			background: #000
+		}
+
+		.owl-carousel .owl-video-play-icon {
+			position: absolute;
+			height: 80px;
+			width: 80px;
+			left: 50%;
+			top: 50%;
+			margin-left: -40px;
+			margin-top: -40px;
+			background: url(owl.video.play.png) no-repeat;
+			cursor: pointer;
+			z-index: 1;
+			-webkit-backface-visibility: hidden;
+			-webkit-transition: scale 100ms ease;
+			-moz-transition: scale 100ms ease;
+			-ms-transition: scale 100ms ease;
+			-o-transition: scale 100ms ease;
+			transition: scale 100ms ease
+		}
+
+		.owl-carousel .owl-video-play-icon:hover {
+			-webkit-transition: scale(1.3, 1.3);
+			-moz-transition: scale(1.3, 1.3);
+			-ms-transition: scale(1.3, 1.3);
+			-o-transition: scale(1.3, 1.3);
+			transition: scale(1.3, 1.3)
+		}
+
+		.owl-carousel .owl-video-playing .owl-video-tn, .owl-carousel .owl-video-playing .owl-video-play-icon {
+			display: none
+		}
+
+		.owl-carousel .owl-video-tn {
+			opacity: 0;
+			height: 100%;
+			background-position: center center;
+			background-repeat: no-repeat;
+			-webkit-background-size: contain;
+			-moz-background-size: contain;
+			-o-background-size: contain;
+			background-size: contain;
+			-webkit-transition: opacity 400ms ease;
+			-moz-transition: opacity 400ms ease;
+			-ms-transition: opacity 400ms ease;
+			-o-transition: opacity 400ms ease;
+			transition: opacity 400ms ease
+		}
+
+		.owl-carousel .owl-video-frame {
+			position: relative;
+			z-index: 1
+		}
+
 		body {
 			margin: 0;
 			padding: 0;
@@ -48,7 +259,7 @@
 			color: #fff;
 			font-size: 18px;
 			font-weight: bold;
-			z-index:2;
+			z-index: 2;
 		}
 
 		.fixed-gallery__close {
@@ -78,7 +289,7 @@
 
 		.fixed-gallery__image {
 			max-width: 100%;
-			max-height:100%;
+			max-height: 100%;
 			position: absolute;
 			left: 0;
 			right: 0;
@@ -121,6 +332,7 @@
 		.fixed-gallery__slider .owl-prev {
 			left: 0;
 		}
+
 		.fixed-gallery__slider .owl-next {
 			right: 0;
 		}
@@ -138,7 +350,54 @@
 	</style>
 
 	<script>
-		!function(){var a=window.MutationObserver||window.WebKitMutationObserver,b="ontouchstart"in window||window.DocumentTouch&&document instanceof DocumentTouch,c=void 0!==document.documentElement.style["touch-action"]||document.documentElement.style["-ms-touch-action"];if(!c&&b&&a){window.Hammer=window.Hammer||{};var d=/touch-action[:][\s]*(none)[^;'"]*/,e=/touch-action[:][\s]*(manipulation)[^;'"]*/,f=/touch-action/,g=navigator.userAgent.match(/(iPad|iPhone|iPod)/g)?!0:!1,h=function(){try{var a=document.createElement("canvas");return!(!window.WebGLRenderingContext||!a.getContext("webgl")&&!a.getContext("experimental-webgl"))}catch(b){return!1}}(),i=h&&g;window.Hammer.time={getTouchAction:function(a){return this.checkStyleString(a.getAttribute("style"))},checkStyleString:function(a){return f.test(a)?d.test(a)?"none":e.test(a)?"manipulation":!0:void 0},shouldHammer:function(a){var b=this.hasParent(a.target);return b&&(!i||Date.now()-a.target.lastStart<125)?b:!1},touchHandler:function(a){var b=a.target.getBoundingClientRect(),c=b.top!==this.pos.top||b.left!==this.pos.left,d=this.shouldHammer(a);("none"===d||c===!1&&"manipulation"===d)&&("touchend"===a.type&&(a.target.focus(),setTimeout(function(){a.target.click()},0)),a.preventDefault()),this.scrolled=!1,delete a.target.lastStart},touchStart:function(a){this.pos=a.target.getBoundingClientRect(),i&&this.hasParent(a.target)&&(a.target.lastStart=Date.now())},styleWatcher:function(a){a.forEach(this.styleUpdater,this)},styleUpdater:function(a){if(a.target.updateNext)return void(a.target.updateNext=!1);var b=this.getTouchAction(a.target);return b?void("none"!==b&&(a.target.hadTouchNone=!1)):void(!b&&(a.oldValue&&this.checkStyleString(a.oldValue)||a.target.hadTouchNone)&&(a.target.hadTouchNone=!0,a.target.updateNext=!1,a.target.setAttribute("style",a.target.getAttribute("style")+" touch-action: none;")))},hasParent:function(a){for(var b,c=a;c&&c.parentNode;c=c.parentNode)if(b=this.getTouchAction(c))return b;return!1},installStartEvents:function(){document.addEventListener("touchstart",this.touchStart.bind(this)),document.addEventListener("mousedown",this.touchStart.bind(this))},installEndEvents:function(){document.addEventListener("touchend",this.touchHandler.bind(this),!0),document.addEventListener("mouseup",this.touchHandler.bind(this),!0)},installObserver:function(){this.observer=new a(this.styleWatcher.bind(this)).observe(document,{subtree:!0,attributes:!0,attributeOldValue:!0,attributeFilter:["style"]})},install:function(){this.installEndEvents(),this.installStartEvents(),this.installObserver()}},window.Hammer.time.install()}}();
+		!function () {
+			var a = window.MutationObserver || window.WebKitMutationObserver, b = "ontouchstart" in window || window.DocumentTouch && document instanceof DocumentTouch, c = void 0 !== document.documentElement.style["touch-action"] || document.documentElement.style["-ms-touch-action"];
+			if (!c && b && a) {
+				window.Hammer = window.Hammer || {};
+				var d = /touch-action[:][\s]*(none)[^;'"]*/, e = /touch-action[:][\s]*(manipulation)[^;'"]*/, f = /touch-action/, g = navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? !0 : !1, h = function () {
+					try {
+						var a = document.createElement("canvas");
+						return !(!window.WebGLRenderingContext || !a.getContext("webgl") && !a.getContext("experimental-webgl"))
+					} catch (b) {
+						return !1
+					}
+				}(), i = h && g;
+				window.Hammer.time = {
+					getTouchAction: function (a) {
+						return this.checkStyleString(a.getAttribute("style"))
+					}, checkStyleString: function (a) {
+						return f.test(a) ? d.test(a) ? "none" : e.test(a) ? "manipulation" : !0 : void 0
+					}, shouldHammer: function (a) {
+						var b = this.hasParent(a.target);
+						return b && (!i || Date.now() - a.target.lastStart < 125) ? b : !1
+					}, touchHandler: function (a) {
+						var b = a.target.getBoundingClientRect(), c = b.top !== this.pos.top || b.left !== this.pos.left, d = this.shouldHammer(a);
+						("none" === d || c === !1 && "manipulation" === d) && ("touchend" === a.type && (a.target.focus(), setTimeout(function () {
+							a.target.click()
+						}, 0)), a.preventDefault()), this.scrolled = !1, delete a.target.lastStart
+					}, touchStart: function (a) {
+						this.pos = a.target.getBoundingClientRect(), i && this.hasParent(a.target) && (a.target.lastStart = Date.now())
+					}, styleWatcher: function (a) {
+						a.forEach(this.styleUpdater, this)
+					}, styleUpdater: function (a) {
+						if (a.target.updateNext)return void(a.target.updateNext = !1);
+						var b = this.getTouchAction(a.target);
+						return b ? void("none" !== b && (a.target.hadTouchNone = !1)) : void(!b && (a.oldValue && this.checkStyleString(a.oldValue) || a.target.hadTouchNone) && (a.target.hadTouchNone = !0, a.target.updateNext = !1, a.target.setAttribute("style", a.target.getAttribute("style") + " touch-action: none;")))
+					}, hasParent: function (a) {
+						for (var b, c = a; c && c.parentNode; c = c.parentNode)if (b = this.getTouchAction(c))return b;
+						return !1
+					}, installStartEvents: function () {
+						document.addEventListener("touchstart", this.touchStart.bind(this)), document.addEventListener("mousedown", this.touchStart.bind(this))
+					}, installEndEvents: function () {
+						document.addEventListener("touchend", this.touchHandler.bind(this), !0), document.addEventListener("mouseup", this.touchHandler.bind(this), !0)
+					}, installObserver: function () {
+						this.observer = new a(this.styleWatcher.bind(this)).observe(document, {subtree: !0, attributes: !0, attributeOldValue: !0, attributeFilter: ["style"]})
+					}, install: function () {
+						this.installEndEvents(), this.installStartEvents(), this.installObserver()
+					}
+				}, window.Hammer.time.install()
+			}
+		}();
 		window.fixedGalleryImages = [
 			{
 				title: 'Заголовок 1',
@@ -190,15 +449,11 @@
 
 				// Adjusting the current pinch/pan event properties using the previous ones set when they finished touching
 				currentScale = adjustScale * ev.gesture.scale < 1 ? 1 : adjustScale * ev.gesture.scale;
-				console.log(((imgWidth*currentScale-$(window).width())/4)+ev.gesture.deltaX);
-				if(imgWidth*currentScale > $(window).width()) {
-					if(currentDeltaX >= ((imgWidth*currentScale-$(window).width())/4)-ev.gesture.deltaX) {
-						currentDeltaX = adjustDeltaX + (ev.gesture.deltaX / currentScale);
-					} else {
-						currentDeltaX = ((imgWidth*currentScale-$(window).width())/4)-ev.gesture.deltaX;
-					}
+				console.log(((imgWidth * currentScale - $(window).width()) / 4) + ev.gesture.deltaX);
+				if (imgWidth * currentScale > $(window).width()) {
+					currentDeltaX = adjustDeltaX + (ev.gesture.deltaX / currentScale);
 				}
-				if(adjustDeltaY <= 0 || adjustDeltaY >= imgHeight*currentScale - $(window).height()) {
+				if (adjustDeltaY <= 0 || adjustDeltaY >= imgHeight * currentScale - $(window).height()) {
 					currentDeltaY = adjustDeltaY + (ev.gesture.deltaY / currentScale);
 				} else {
 					currentDeltaY = adjustDeltaY;
@@ -214,6 +469,13 @@
 
 
 			$hammerImgs.on("panend pinchend", function (ev) {
+				if (imgWidth * currentScale > $(window).width()) {
+					if (currentDeltaX >= ((imgWidth * currentScale - $(window).width()) / 4)) {
+						currentDeltaX = adjustDeltaX + (ev.gesture.deltaX / currentScale);
+					} else {
+						currentDeltaX = ((imgWidth * currentScale - $(window).width()) / 4);
+					}
+				}
 
 				// Saving the final transforms for adjustment next time the user interacts.
 				adjustScale = currentScale;
